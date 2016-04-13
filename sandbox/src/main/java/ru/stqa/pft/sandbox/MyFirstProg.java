@@ -9,10 +9,12 @@ public class MyFirstProg {
 
     Square s = new Square(5);
     //s.l = 5;
+    System.out.println("Площадь квадрата со сторонами " + s.l + " = " + s.area());
 
     Rectangle r = new Rectangle(6,6);
     //r.a = 6;
     //r.b = 6;
+    System.out.println("Площадь квадрата " + r.a + " и " + r.b + " = "  + r.area());
 
 /*
     double l = 5;
