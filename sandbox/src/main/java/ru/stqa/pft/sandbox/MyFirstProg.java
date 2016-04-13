@@ -10,12 +10,9 @@ public class MyFirstProg {
     Square s = new Square(5);
     //s.l = 5;
 
-    System.out.println("Площадь квадрата " + s.l + " = " + area(s));
-
     Rectangle r = new Rectangle(6,6);
     //r.a = 6;
     //r.b = 6;
-    System.out.println("Площадь квадрата = " + area(r));
 
 /*
     double l = 5;
@@ -25,14 +22,6 @@ public class MyFirstProg {
 
   public static void Hello(String somebody) {
     System.out.println("Hello, " + somebody);
-  }
-
-  public static double area(Square s) {
-    return s.l * s.l;
-  }
-
-  public static double area(Rectangle r) {
-    return r.a * r.b;
   }
 
 }
