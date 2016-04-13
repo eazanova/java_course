@@ -3,7 +3,7 @@ package ru.stqa.pft.sandbox;
 import java.awt.*;
 
 public class MyFirstProg {
-  public static void main(String[] args) {
+  public static void main(String[] args) { //запускаемый класс
     Hello("wold");
     Hello("user");
 
