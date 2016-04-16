@@ -1,6 +1,7 @@
 package ru.stqa.pft.sandbox;
 
 import java.awt.*;
+//import java.awt.Point;
 
 public class MyFirstProg {
   public static void main(String[] args) { //запускаемый класс
@@ -16,14 +17,22 @@ public class MyFirstProg {
     //r.b = 6;
     System.out.println("Площадь квадрата " + r.a + " и " + r.b + " = "  + r.area());
 
+    Point p1 = new Point(0,0);
+    Point p2 = new Point(2,2);
+    System.out.println("Расстояние между точками: " + distance(p1, p2));
 /*
     double l = 5;
     double s = l*l;
     System.out.println("Площадь квадрата " + l + " = " + s);*/
   }
 
-  public static void Hello(String somebody) {
+  public static void Hello(String somebody) {  //функция
     System.out.println("Hello, " + somebody);
+  }
+
+  public static double distance(Point p1, Point p2) {
+    return Math.sqrt(Math.pow(p1.x-p2.x, 2) + Math.pow(p1.y-p2.y, 2) );
+
   }
 
 }
