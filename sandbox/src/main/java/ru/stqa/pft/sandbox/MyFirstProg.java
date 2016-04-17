@@ -17,8 +17,8 @@ public class MyFirstProg {
     //r.b = 6;
     System.out.println("Площадь квадрата " + r.a + " и " + r.b + " = "  + r.area());
 
-    Point p1 = new Point(0,0);
-    Point p2 = new Point(2,2);
+     Point p1 = new Point(0,0);
+     Point p2 = new Point(2,2);
     System.out.println("Расстояние между точками: " + distance(p1, p2));
 /*
     double l = 5;
