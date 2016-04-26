@@ -19,7 +19,7 @@ public class MyFirstProg {
 
      Point p1 = new Point(1,1);
      Point p2 = new Point(5,5);
-    System.out.println("Расстояние между точками: " + p1.distance(p2));
+    System.out.println("Расстояние между точками: " + p2.distance(p1));
 /*
     double l = 5;
     double s = l*l;
