@@ -73,7 +73,9 @@ public class TestBase {
 
   @AfterMethod
   public void tearDown() {
-    wd.quit();
+
+    //wd.quit();
+    wd.close();
   }
 
   protected void deleteSelectedGroups() {
