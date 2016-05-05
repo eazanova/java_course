@@ -8,9 +8,10 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
+import ru.stqa.pft.addressbook.model.ContactData;
 
-public class ContactCreationTests {
-    FirefoxDriver wd;
+public class ContactCreationTests extends TestBase {
+   /* FirefoxDriver wd;
     
     @BeforeMethod
     public void setUp() throws Exception {
@@ -29,7 +30,7 @@ public class ContactCreationTests {
         wd.findElement(By.name("pass")).sendKeys(password);
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
     }
-
+*/
     @Test
     public void testContactCreation() {
         gotoCreationForm();
