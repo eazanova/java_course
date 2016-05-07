@@ -13,6 +13,6 @@ public class GroupCreationTests extends TestBase {
     app.getGroupHelper().fillGroupForm(new GroupData("test1", "test2", "test3"));
     app.getGroupHelper().submitGroupCtration();
     app.getGroupHelper().returnToGroupPage();
-  }
+    }
 
 }

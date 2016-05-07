@@ -1,7 +1,5 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -15,6 +13,7 @@ public class AplicationManager {
   private NavigationHalper navigationHalper;
   private GroupHelper groupHelper;
   private SessionHelper sessionHelper;
+  private ContactHelper contactHelper; //новый
 
     public void init() {
     wd = new FirefoxDriver();
@@ -23,10 +22,9 @@ public class AplicationManager {
     groupHelper = new GroupHelper(wd);
     navigationHalper = new NavigationHalper(wd);
     sessionHelper = new SessionHelper(wd);
+    contactHelper = new ContactHelper(wd); //новый
     sessionHelper.login("admin", "secret");
   }
-
-
 
   public void stop() {
     wd.quit();
@@ -40,4 +38,8 @@ public class AplicationManager {
   public NavigationHalper getNavigationHalper() {
     return navigationHalper;
   }
+
+  public ContactHelper getcontactHelper() {
+    return contactHelper;
+  } //новый
 }
