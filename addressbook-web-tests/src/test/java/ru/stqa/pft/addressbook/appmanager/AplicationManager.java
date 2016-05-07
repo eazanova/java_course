@@ -29,7 +29,8 @@ public class AplicationManager {
 
 
   public void stop() {
-    wd.close();
+    wd.quit();
+    //было wd.stop();
   }
 
   public GroupHelper getGroupHelper() {

@@ -1,17 +1,19 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+
+import org.testng.annotations.AfterMethod;
 
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
+import ru.stqa.pft.addressbook.appmanager.ContactHelper;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-public class ContactCreationTests extends TestBase {
-   /* FirefoxDriver wd;
+public class ContactCreationTests  {
+    FirefoxDriver wd;
     
     @BeforeMethod
     public void setUp() throws Exception {
@@ -30,9 +32,11 @@ public class ContactCreationTests extends TestBase {
         wd.findElement(By.name("pass")).sendKeys(password);
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
     }
-*/
+
     @Test
     public void testContactCreation() {
+       // app.getNavigationHalper().gotoContactCreationPage();
+
         gotoCreationForm();
         fillContactForm(new ContactData("test", "test", "test", "test", "test.test@test.ru"));
         submitContactCreation();
@@ -48,10 +52,17 @@ public class ContactCreationTests extends TestBase {
     }
 
     private void fillContactForm(ContactData contactData) {
+       // HelperBase.type(By.name("firstname"), contactData.getFarstname());
+      //  type(By.name("group_name"), contact.getName());
+       /* typeContact(By.name("firstname"), contactData.getFarstname());
+        typeContact(By.name("lastname"), contactData.getLastname());
+        typeContact(By.name("address"), contactData.getAdress());
+        typeContact(By.name("home"), contactData.getHome());
+        typeContact(By.name("email"), contactData.getEmail());*/
+
         wd.findElement(By.name("firstname")).click();
         wd.findElement(By.name("firstname")).clear();
         wd.findElement(By.name("firstname")).sendKeys(contactData.getFarstname());
-        wd.findElement(By.name("theform")).click();
         wd.findElement(By.name("lastname")).click();
         wd.findElement(By.name("lastname")).clear();
         wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
@@ -64,8 +75,15 @@ public class ContactCreationTests extends TestBase {
         wd.findElement(By.name("email")).click();
         wd.findElement(By.name("email")).clear();
         wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
+
         wd.findElement(By.name("theform")).click();
     }
+
+  /*  private void typeContact(By locatorContact, String textContact) {
+        wd.findElement(locatorContact).click();
+        wd.findElement(By.name("firstname")).clear();
+        wd.findElement(By.name("firstname")).sendKeys(textContact);
+    }*/
 
     private void gotoCreationForm() {
         wd.findElement(By.linkText("add new")).click();
@@ -84,4 +102,5 @@ public class ContactCreationTests extends TestBase {
             return false;
         }
     }
+
 }
