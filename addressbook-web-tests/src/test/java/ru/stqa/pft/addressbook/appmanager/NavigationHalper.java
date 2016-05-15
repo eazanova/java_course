@@ -16,11 +16,16 @@ public class NavigationHalper extends HelperBase {
   }
 
   public void gotoGroupPage() {
+    if  (isElementPreseent(By.tagName("h1"))
+            && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+            && isElementPreseent(By.name("new"))) {
+        return;
+    }
     click(By.linkText("groups"));
   }
 
   public void gotoContactCreationPage() {
-    click(By.linkText("add new"));
+       click(By.linkText("add new"));
   }
 
 }

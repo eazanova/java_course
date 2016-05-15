@@ -35,7 +35,7 @@ public class AplicationManager {
       }
 
 
-    wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     //groupHelper.wd.get("http://localhost/addressbook/"); у меня его почему-то нет
     groupHelper = new GroupHelper(wd);
     navigationHalper = new NavigationHalper(wd);

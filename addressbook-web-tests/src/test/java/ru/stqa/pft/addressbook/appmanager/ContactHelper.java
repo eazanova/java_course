@@ -2,8 +2,9 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
  * Created by Евгения on 05.05.2016.
@@ -24,7 +25,7 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"),contactData.getFarstname());
     //wd.findElement(By.name("firstname")).click();
     //wd.findElement(By.name("firstname")).clear();
@@ -34,6 +35,16 @@ public class ContactHelper extends HelperBase {
     type(By.name("home"),contactData.getHome());
     type(By.name("email"),contactData.getEmail());
     // wd.findElement(By.name("theform")).click();
+
+    if (creation) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    } else {
+      Assert.assertFalse(isElementPreseent(By.name("new_group")));
+    }
+    /*
+    if(isElementPreseent(By.name("new_group")))
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    */
   }
 
   public void gotoCreationForm() {
@@ -42,8 +53,8 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectContact() {
-    if (!wd.findElement(By.id("6")).isSelected()) { //не поняла пока как задавать нужный индекс
-      wd.findElement(By.id("6")).click();
+    if (!wd.findElement(By.id("11")).isSelected()) { //не поняла пока как задавать нужный индекс
+      wd.findElement(By.id("11")).click();
     }
   }
 
@@ -57,15 +68,21 @@ public class ContactHelper extends HelperBase {
   }
 
   public void returntoHome() {
-    wd.findElement(By.linkText("home")).click();
+    if (isElementPreseent(By.id("maintable"))) {
+      return;
+    }
+    click(By.linkText("home"));
+    //wd.findElement(By.linkText("home")).click();
   }
 
   public void submitContactModification() {
-    wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
+    click(By.xpath("//div[@id='content']/form[1]/input[22]"));
+    //wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
   }
 
   public void initContactModification() {
-    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    //wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
   }
 
 }
