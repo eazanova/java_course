@@ -53,10 +53,13 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectContact() {
-    if (!wd.findElement(By.id("11")).isSelected()) { //не поняла пока как задавать нужный индекс
-      wd.findElement(By.id("11")).click();
-    }
+    click(By.name("selected[]"));
+    /*if (!wd.findElement(By.id("20")).isSelected()) { //не поняла пока как задавать нужный индекс
+      wd.findElement(By.id("20")).click();
+    }*/
   }
+
+
 
   public void initContactDeletion() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
@@ -85,4 +88,15 @@ public class ContactHelper extends HelperBase {
     //wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
   }
 
+  public void createContact(ContactData contact, boolean x) {
+    gotoCreationForm();
+    fillContactForm(contact, x);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public boolean isThereAContact() {
+    //return isElementPreseent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[7]/a/img"));
+    return isElementPreseent(By.name("selected[]"));
+  }
 }
