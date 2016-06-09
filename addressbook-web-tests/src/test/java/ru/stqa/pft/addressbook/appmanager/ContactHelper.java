@@ -2,9 +2,13 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Евгения on 05.05.2016.
@@ -52,8 +56,11 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void selectContact() {
-    click(By.name("selected[]"));
+  public void selectContact(int index) {
+    // click(By.name("selected[]"));
+
+    wd.findElements(By.name("selected[]")).get(index).click();
+
     /*if (!wd.findElement(By.id("20")).isSelected()) { //не поняла пока как задавать нужный индекс
       wd.findElement(By.id("20")).click();
     }*/
@@ -88,9 +95,9 @@ public class ContactHelper extends HelperBase {
     //wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
   }
 
-  public void createContact(ContactData contact, boolean x) {
+  public void createContact(ContactData contact) {
     gotoCreationForm();
-    fillContactForm(contact, x);
+    fillContactForm(contact, true);
     submitContactCreation();
     returnToHomePage();
   }
@@ -98,5 +105,20 @@ public class ContactHelper extends HelperBase {
   public boolean isThereAContact() {
     //return isElementPreseent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[7]/a/img"));
     return isElementPreseent(By.name("selected[]"));
+  }
+
+  public List<ContactData> getContactList() {
+    List<ContactData> groups = new ArrayList<ContactData>();
+    List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
+    for (WebElement element : elements) {
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      String lastname = element.findElement(By.xpath("//td[2]")).getText();
+      String firstname = element.findElement(By.xpath("//td[3]")).getText();
+      ContactData group = new ContactData(id, firstname, lastname, null, null, null, null);
+      groups.add(group);
+    }
+    return groups;
+
+
   }
 }
