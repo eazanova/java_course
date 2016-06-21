@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 
@@ -13,17 +12,17 @@ public class GroupCreationTests extends TestBase {
 
   @Test
   public void testGroupCreation() {
-    app.getNavigationHalper().gotoGroupPage();
-  //  int before = app.getGroupHelper().getGroupCount();
-    List<GroupData> before = app.getGroupHelper().getGroupList();
-    GroupData group = new GroupData("test1", null, null);
-    app.getGroupHelper().createGroup(group);
-    /*app.getGroupHelper().initGroupCreation();
-    app.getGroupHelper().fillGroupForm(new GroupData("test1", null, null));
-    app.getGroupHelper().submitGroupCtration();
-    app.getGroupHelper().returnToGroupPage();*/
-    //int after = app.getGroupHelper().getGroupCount();
-    List<GroupData> after = app.getGroupHelper().getGroupList();
+    app.goTo().GroupPage();
+  //  int before = app.group().getGroupCount();
+    List<GroupData> before = app.group().list();
+    GroupData group = new GroupData().withName("test1");
+    app.group().create(group);
+    /*app.group().initGroupCreation();
+    app.group().fillGroupForm(new GroupData("test1", null, null));
+    app.group().submitGroupCtration();
+    app.group().returnToGroupPage();*/
+    //int after = app.group().getGroupCount();
+    List<GroupData> after = app.group().list();
     Assert.assertEquals(after.size(), before.size() + 1);
 
 /* //простой способ поиска максимального id

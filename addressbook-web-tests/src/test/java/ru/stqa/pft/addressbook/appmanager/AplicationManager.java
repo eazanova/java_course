@@ -33,8 +33,6 @@ public class AplicationManager {
       } else if (browser == BrowserType.IE) {
         wd = new InternetExplorerDriver();
       }
-
-
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     //groupHelper.wd.get("http://localhost/addressbook/"); у меня его почему-то нет
     groupHelper = new GroupHelper(wd);
@@ -49,11 +47,11 @@ public class AplicationManager {
     //было wd.stop();
   }
 
-  public GroupHelper getGroupHelper() {
+  public GroupHelper group() {
     return groupHelper;
   }
 
-  public NavigationHalper getNavigationHalper() {
+  public NavigationHalper goTo() {
     return navigationHalper;
   }
 

@@ -15,7 +15,7 @@ public class NavigationHalper extends HelperBase {
     //this.wd = wd;
   }
 
-  public void gotoGroupPage() {
+  public void GroupPage() {
     if  (isElementPreseent(By.tagName("h1"))
             && wd.findElement(By.tagName("h1")).getText().equals("Groups")
             && isElementPreseent(By.name("new"))) {
